@@ -1,5 +1,5 @@
 void setup(){
-  size(800,800);
+  size(645,743);
 }
 
 void draw(){
@@ -7,7 +7,7 @@ void draw(){
     for(int j=0;j<4;j++){
       strokeWeight(15);
       stroke(142,142,142);
-      rect(35+i*180,35+j*180,180,180);
+      rect(72.5+i*125,200+j*125,125,125);
     }
   }
 }
