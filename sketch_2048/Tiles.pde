@@ -1,23 +1,23 @@
 class Tiles{
-  int x;
-  int y;
+  float x;
+  float y;
   int size;
   String state;
-  color c;
   int num;
   
-  Tiles(int x_in,int y_in, int size_in, String state_in, color c_in, int num_in){
+  Tiles(float x_in,float y_in, int size_in, String state_in, int num_in){
     x = x_in;
     y = y_in;
     size = size_in;
     state = state_in;
-    c = c_in;
     num = num_in;
   }
   
   void display(){
-    fill(c);
+    strokeWeight(15);
+    stroke(142,142,142);
     rect(x,y,size,size);
+    
   }
 }
     
