@@ -17,8 +17,10 @@ class Tiles{
     strokeWeight(15);
     stroke(142,142,142);
     rect(x,y,size,size);
-    
+    fill(255,0,0);
+    textSize(50);
+    textAlign(CENTER);
+    text(num,x+size/2,y+15+size/2);
+    fill(255);
   }
 }
-    
-    
