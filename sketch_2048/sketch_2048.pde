@@ -9,3 +9,27 @@ void setup(){
 void draw(){
   grid.display();
 }
+
+void keyPressed() {
+  if (key == 'w') {
+    grid.shift(2);
+  }
+  if (key == 'a') {
+    grid.shift(0);
+  }
+  if (key == 's') {
+    grid.shift(3);
+  }
+  if (key == 'd') {
+    grid.shift(1);
+  }
+  
+  if (key == CODED) {
+    if (keyCode == UP) {
+      
+    } 
+    if (keyCode == DOWN) {
+      
+    }
+    } 
+}
