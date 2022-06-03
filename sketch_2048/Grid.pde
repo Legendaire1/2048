@@ -3,6 +3,11 @@ class Grid{
   int rows;
   int cols;
   
+  static final int left = 0;
+  static final int right = 1;
+  static final int up = 2;
+  static final int down = 3;
+  
   Grid(int cols_in, int rows_in){
     rows = rows_in;
     cols = cols_in;
@@ -31,6 +36,19 @@ class Grid{
     grids[i1][j1].num=2;
   }
   
-  void shift(){
+  int shift(int direction){
+    if (direction == left) {
+      
+    }
+    if (direction == right) {
+      
+    }
+    if (direction == up) {
+      
+    }
+    if (direction == down) {
+      
+    }
+    return 0;
   }
 }
