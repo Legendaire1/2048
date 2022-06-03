@@ -22,7 +22,13 @@ class Grid{
     }
   }
   
-  boolean full(){
+  void spawn(){
+    int i=int(random(rows));
+    int j=int(random(rows));
+    int i1=int(random(cols));
+    int j1=int(random(cols));
+    grids[i][j].num=2;
+    grids[i1][j1].num=2;
   }
   
   void shift(){
