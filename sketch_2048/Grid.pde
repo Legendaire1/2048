@@ -2,7 +2,9 @@ class Grid {
   Tiles[][] grids;
   int rows;
   int cols;
-
+  Tiles[][] before;
+  Tiles[][] after;
+  
   static final int left = 0;
   static final int right = 1;
   static final int up = 2;
@@ -12,9 +14,13 @@ class Grid {
     rows = rows_in;
     cols = cols_in;
     grids = new Tiles[cols][rows];
+    before = new Tiles[rows][cols];
+    after = new Tiles[rows][cols];
     for (int i=0; i<rows; i++) {
       for (int j=0; j<cols; j++) {
         grids[i][j] = new Tiles(72.5+j*125, 200+i*125, 125, "EMPTY", 0);
+        before[i][j] = new Tiles(72.5+j*125, 200+i*125, 125, "EMPTY", 0);
+        after[i][j] = new Tiles(72.5+j*125, 200+i*125, 125, "EMPTY", 0);
       }
     }
     for (int i=0; i<rows; i++) {
@@ -182,6 +188,7 @@ class Grid {
         }
       }
       if (a == true) {shift(up);}
+    
     }
   }
 }
