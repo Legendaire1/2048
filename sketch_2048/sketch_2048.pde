@@ -12,38 +12,88 @@ void draw(){
 
 void keyPressed() {
   if (key == 'w') {
+    makeBefore();
     grid.shift(2);
-    grid.spawn();
+    makeAfter();
+    if (compare(grid.before,grid.after) == true) {}
+    else {grid.spawn();}
   }
   if (key == 'a') {
+  makeBefore();
     grid.shift(0);
-    grid.spawn();
+    makeAfter();
+    if (compare(grid.before,grid.after) == true) {}
+    else {grid.spawn();}
   }
   if (key == 's') {
+   makeBefore();
     grid.shift(3);
-    grid.spawn();
+    makeAfter();
+    if (compare(grid.before,grid.after) == true) {}
+    else {grid.spawn();}
   }
   if (key == 'd') {
+  makeBefore();
     grid.shift(1);
-    grid.spawn();
+  makeAfter();
+    if (compare(grid.before,grid.after) == true) {}
+    else {grid.spawn();}
   }
   
   if (key == CODED) {
     if (keyCode == UP) {
+      makeBefore();
       grid.shift(2);
-      grid.spawn();
+     makeAfter();
+    if (compare(grid.before,grid.after) == true) {}
+    else {grid.spawn();}
     } 
     if (keyCode == DOWN) {
+    makeBefore();
       grid.shift(3);
-      grid.spawn();
+     makeAfter();
+    if (compare(grid.before,grid.after) == true) {}
+    else {grid.spawn();}
     }
    if (keyCode == RIGHT) {
+      makeBefore();
       grid.shift(1);
-      grid.spawn();
+     makeAfter();
+    if (compare(grid.before,grid.after) == true) {}
+    else {grid.spawn();}
     } 
     if (keyCode == LEFT) {
+      makeBefore();
       grid.shift(0);
-      grid.spawn();
+    makeAfter();
+    if (compare(grid.before,grid.after) == true) {}
+    else {grid.spawn();}
     } 
-    } 
+    }
 }
+    void makeBefore() {
+      for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+          grid.before[i][j].num = grid.grids[i][j].num;
+        }
+      }
+    }
+    
+    void makeAfter() {
+      for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+          grid.after[i][j].num = grid.grids[i][j].num;
+        }
+      }
+    }
+    boolean compare(Tiles[][] before, Tiles[][] after) {
+       for (int i = 0; i < 4; i++) {
+         for (int j = 0; j < 4; j++) {
+            if (before[i][j].num != after[i][j].num) {
+              return false;
+              
+            }
+         }
+       }
+       return true;
+    }
