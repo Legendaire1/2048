@@ -5,6 +5,7 @@ class Tiles{
   String state;
   int num;
   Tiles left,right,up,down;
+  boolean combined;
   
   Tiles(float x_in,float y_in, int size_in, String state_in, int num_in){
     x = x_in;
@@ -12,6 +13,7 @@ class Tiles{
     size = size_in;
     state = state_in;
     num = num_in;
+    combined = false;
   }
   
   void display(){
