@@ -18,12 +18,37 @@ class Tiles{
     strokeWeight(15);
     stroke(142,142,142);
     rect(x,y,size,size);
-    fill(255,0,0);
+    fill(0);
     textSize(50);
     textAlign(CENTER);
     if (num != 0) {
     text(num,x+size/2,y+15+size/2);
     }
-    fill(255);
   }
+  
+  void setColor() {
+    if (this.num == 0) {
+      fill(214,180,180);
+    }
+    if (this.num == 2) {
+      fill(255,240,240);
+    }
+    if (this.num == 4) {
+      fill(240,235,210);
+    }
+    if (this.num == 8) {
+      fill(211,188,141);
+    }
+    if (this.num == 16) {
+      fill(229,158,109);
+    }
+    if (this.num == 32) {
+      fill(255,102,102);
+    }
+    if (this.num == 64) {
+      fill(217,68,30);
+    }
+  }
+  
+  
 }
