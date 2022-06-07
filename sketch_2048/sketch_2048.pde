@@ -13,6 +13,7 @@ void draw(){
 void keyPressed() {
   if (key == 'w') {
     makeBefore();
+    grid.counter = 0;
     grid.shift(2);
     makeAfter();
     if (compare(grid.before,grid.after) == true) {}
