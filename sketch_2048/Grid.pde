@@ -4,7 +4,8 @@ class Grid {
   int cols;
   Tiles[][] before;
   Tiles[][] after;
-  
+  int counter;
+
   static final int left = 0;
   static final int right = 1;
   static final int up = 2;
@@ -59,13 +60,13 @@ class Grid {
         }
       }
     }
-    println(grids[3][3].left);
   }
 
 
   void display() {
     for (int i=0; i<rows; i++) {
       for (int j=0; j<cols; j++) {
+        grids[i][j].setColor();
         grids[i][j].display();
       }
     }
@@ -87,8 +88,13 @@ class Grid {
     int j=int(random(rows));
     int i1=int(random(cols));
     int j1=int(random(cols));
+    if (i == i1 && j == j1) {
+      initialspawn();
+    }
+    else{
     grids[i][j].num=2;
     grids[i1][j1].num=2;
+    }
   }
 
   void spawn() {
@@ -108,14 +114,22 @@ class Grid {
     if (dir == right) {
       for (int i=0; i<rows; i++) {
         for (int j=2; j>-1; j--) {
-            if (grids[i][j].right.num != 0) {
-            } else {
-              int placeholder = grids[i][j].num;
-              grids[i][j].num = grids[i][j].right.num;
-              grids[i][j].right.num = placeholder;
+          if (grids[i][j].right.num != 0) {
+            if (grids[i][j].right.num == grids[i][j].num) {
+              grids[i][j].right.num = grids[i][j].num * 2;
+              grids[i][j].num = 0;
+              if (counter == 0) {
+                shift(right);
+              }
             }
+          } else {
+            int placeholder = grids[i][j].num;
+            grids[i][j].num = grids[i][j].right.num;
+            grids[i][j].right.num = placeholder;
+          }
         }
       }
+      counter++;
       boolean a = false;
       for (int i=0; i < rows; i++) {
         for (int j=0; j < cols-1; j++) {
@@ -124,19 +138,29 @@ class Grid {
           }
         }
       }
-      if (a == true) {shift(right);}
+      if (a == true) {
+        shift(right);
+      }
     }
     if (dir == down) {
       for (int i=2; i>-1; i--) {
         for (int j=0; j<rows; j++) {
-            if (grids[i][j].down.num != 0) {
-            } else {
-              int placeholder = grids[i][j].num;
-              grids[i][j].num = grids[i][j].down.num;
-              grids[i][j].down.num = placeholder;
+          if (grids[i][j].down.num != 0) {
+            if (grids[i][j].down.num == grids[i][j].num) {
+              grids[i][j].down.num = grids[i][j].num * 2;
+              grids[i][j].num = 0;
+              if (counter == 0) {
+                shift(down);
+              }
             }
+          } else {
+            int placeholder = grids[i][j].num;
+            grids[i][j].num = grids[i][j].down.num;
+            grids[i][j].down.num = placeholder;
+          }
         }
       }
+      counter++;
       boolean a = false;
       for (int i=0; i < rows-1; i++) {
         for (int j=0; j < cols; j++) {
@@ -145,19 +169,29 @@ class Grid {
           }
         }
       }
-      if (a == true) {shift(down);}
+      if (a == true) {
+        shift(down);
+      }
     }
     if (dir == left) {
       for (int i=0; i <rows; i++) {
         for (int j=1; j<cols; j++) {
-            if (grids[i][j].left.num != 0) {
-            } else {
-              int placeholder = grids[i][j].num;
-              grids[i][j].num = grids[i][j].left.num;
-              grids[i][j].left.num = placeholder;
+          if (grids[i][j].left.num != 0) {
+            if (grids[i][j].left.num == grids[i][j].num) {
+              grids[i][j].left.num = grids[i][j].num * 2;
+              grids[i][j].num = 0;
+              if (counter == 0) {
+                shift(left);
+              }
             }
+          } else {
+            int placeholder = grids[i][j].num;
+            grids[i][j].num = grids[i][j].left.num;
+            grids[i][j].left.num = placeholder;
+          }
         }
       }
+      counter++;
       boolean a = false;
       for (int i=0; i < rows; i++) {
         for (int j=1; j < cols; j++) {
@@ -166,19 +200,29 @@ class Grid {
           }
         }
       }
-      if (a == true) {shift(left);}
+      if (a == true) {
+        shift(left);
+      }
     }
     if (dir == up) {
       for (int i=1; i <rows; i++) {
         for (int j=0; j<cols; j++) {
-            if (grids[i][j].up.num != 0) {
-            } else {
-              int placeholder = grids[i][j].num;
-              grids[i][j].num = grids[i][j].up.num;
-              grids[i][j].up.num = placeholder;
+          if (grids[i][j].up.num != 0) {
+            if (grids[i][j].up.num == grids[i][j].num) {
+              grids[i][j].up.num = grids[i][j].num * 2;
+              grids[i][j].num = 0;
+              if (counter == 0) {
+                shift(up);
+              }
             }
+          } else {
+            int placeholder = grids[i][j].num;
+            grids[i][j].num = grids[i][j].up.num;
+            grids[i][j].up.num = placeholder;
+          }
         }
       }
+      counter++;
       boolean a = false;
       for (int i=1; i < rows; i++) {
         for (int j=0; j < cols; j++) {
@@ -187,8 +231,9 @@ class Grid {
           }
         }
       }
-      if (a == true) {shift(up);}
-    
+      if (a == true) {
+        shift(up);
+      }
     }
   }
 }
