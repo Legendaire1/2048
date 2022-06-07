@@ -16,7 +16,7 @@ class Tiles{
   
   void display(){
     strokeWeight(15);
-    stroke(142,142,142);
+    stroke(187,173,160);
     rect(x,y,size,size);
     fill(0);
     textSize(50);
@@ -28,25 +28,28 @@ class Tiles{
   
   void setColor() {
     if (this.num == 0) {
-      fill(214,180,180);
+      fill(205,193,180);
     }
     if (this.num == 2) {
-      fill(255,240,240);
+      fill(238,228,218);
     }
     if (this.num == 4) {
-      fill(240,235,210);
+      fill(238,225,201);
     }
     if (this.num == 8) {
-      fill(211,188,141);
+      fill(243,178,122);
     }
     if (this.num == 16) {
-      fill(229,158,109);
+      fill(246,150,100);
     }
     if (this.num == 32) {
-      fill(255,102,102);
+      fill(247,124,95);
     }
     if (this.num == 64) {
-      fill(217,68,30);
+      fill(247,95,59);
+    }
+    if (this.num == 128) {
+      fill(237,208,115);
     }
   }
   
