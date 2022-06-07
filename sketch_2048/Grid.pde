@@ -4,7 +4,6 @@ class Grid {
   int cols;
   Tiles[][] before;
   Tiles[][] after;
-  int counter;
 
   static final int left = 0;
   static final int right = 1;
@@ -90,10 +89,11 @@ class Grid {
     int j1=int(random(cols));
     if (i == i1 && j == j1) {
       initialspawn();
-    }
-    else{
-    grids[i][j].num=2;
-    grids[i1][j1].num=2;
+    } else {
+      grids[i][j].num=2;
+      grids[i][j].combined = false;
+      grids[i1][j1].num=2;
+      grids[i1][j1].combined = false;
     }
   }
 
@@ -103,6 +103,26 @@ class Grid {
       int j=int(random(cols));
       if (grids[i][j].num == 0) {
         grids[i][j].num = 2;
+        grids[i][j].combined = false;
+        //if (i != 0) {
+        //  grids[i-1][j].up = grids[i][j];
+        //}
+        //if (i != 3) {
+        //  grids[i+1][j].down = grids[i][j];
+        //}
+        //if (j != 0) {
+        //  grids[i][j-1].left = grids[i][j];
+        //}
+        //if (j != 3) {
+        //  grids[i][j+1].right = grids[i][j];
+        //}
+        
+        
+        
+        
+        
+        
+        
       } else {
         spawn();
       }
@@ -116,9 +136,10 @@ class Grid {
         for (int j=2; j>-1; j--) {
           if (grids[i][j].right.num != 0) {
             if (grids[i][j].right.num == grids[i][j].num) {
-              grids[i][j].right.num = grids[i][j].num * 2;
-              grids[i][j].num = 0;
-              if (counter == 0) {
+              if (grids[i][j].combined == false) {
+                grids[i][j].right.num = grids[i][j].num * 2;
+                grids[i][j].num = 0;
+                grids[i][j+1].combined = true;
                 shift(right);
               }
             }
@@ -129,7 +150,7 @@ class Grid {
           }
         }
       }
-      counter++;
+
       boolean a = false;
       for (int i=0; i < rows; i++) {
         for (int j=0; j < cols-1; j++) {
@@ -147,9 +168,10 @@ class Grid {
         for (int j=0; j<rows; j++) {
           if (grids[i][j].down.num != 0) {
             if (grids[i][j].down.num == grids[i][j].num) {
-              grids[i][j].down.num = grids[i][j].num * 2;
-              grids[i][j].num = 0;
-              if (counter == 0) {
+              if (grids[i][j].combined == false) {
+                grids[i][j].down.num = grids[i][j].num * 2;
+                grids[i][j].num = 0;
+                grids[i+1][j].combined = true;
                 shift(down);
               }
             }
@@ -160,7 +182,6 @@ class Grid {
           }
         }
       }
-      counter++;
       boolean a = false;
       for (int i=0; i < rows-1; i++) {
         for (int j=0; j < cols; j++) {
@@ -178,9 +199,10 @@ class Grid {
         for (int j=1; j<cols; j++) {
           if (grids[i][j].left.num != 0) {
             if (grids[i][j].left.num == grids[i][j].num) {
-              grids[i][j].left.num = grids[i][j].num * 2;
-              grids[i][j].num = 0;
-              if (counter == 0) {
+              if (grids[i][j].combined == false) {
+                grids[i][j].left.num = grids[i][j].num * 2;
+                grids[i][j].num = 0;
+                grids[i][j-1].combined = true;
                 shift(left);
               }
             }
@@ -191,7 +213,6 @@ class Grid {
           }
         }
       }
-      counter++;
       boolean a = false;
       for (int i=0; i < rows; i++) {
         for (int j=1; j < cols; j++) {
@@ -209,9 +230,10 @@ class Grid {
         for (int j=0; j<cols; j++) {
           if (grids[i][j].up.num != 0) {
             if (grids[i][j].up.num == grids[i][j].num) {
-              grids[i][j].up.num = grids[i][j].num * 2;
-              grids[i][j].num = 0;
-              if (counter == 0) {
+              if (grids[i][j].combined == false) {
+                grids[i][j].up.num = grids[i][j].num * 2;
+                grids[i][j].num = 0;
+                grids[i-1][j].combined = true;
                 shift(up);
               }
             }
@@ -222,7 +244,6 @@ class Grid {
           }
         }
       }
-      counter++;
       boolean a = false;
       for (int i=1; i < rows; i++) {
         for (int j=0; j < cols; j++) {
