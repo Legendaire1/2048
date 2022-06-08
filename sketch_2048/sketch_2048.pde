@@ -20,6 +20,18 @@ void draw() {
       text("YOU WON!", width/2, height/2);
     }
   }
+  if (lost() == true) {
+    if (counter1 == 0) {
+      grid.display();
+      fill(237, 200, 100, 150);
+      rect(0, 0, width, height);
+      counter1++;
+    } else {
+      fill(255);
+      textAlign(CENTER);
+      text("You lost", width/2, height/2);
+    }
+  }
    else {
     grid.display();
   }
@@ -160,3 +172,43 @@ boolean won() {
   return false;
 }
 
+boolean lost() {
+  if (grid.full() == true) {
+    for (int i=0; i<4; i++) {
+      for (int j=0; j<4; j++) {
+        if (i == 3) {
+        } else {
+          if (grid.grids[i][j].down.num == grid.grids[i][j].num) {return false;}
+        }
+        }
+      }
+    for (int i=0; i<4; i++) {
+      for (int j=0; j<4; j++) {
+        if (i == 0) {
+        } else {
+          if (grid.grids[i][j].up.num == grid.grids[i][j].num) {return false;}
+        }
+      }
+    }
+    for (int i=0; i<4; i++) {
+      for (int j=0; j<4; j++) {
+        if (j == 0) {
+        } else {
+          if (grid.grids[i][j].left.num == grid.grids[i][j].num) {return false;}
+        }
+      }
+    }
+    for (int i=0; i<4; i++) {
+      for (int j=0; j<4; j++) {
+        if (j == 3) {
+        } else {
+          if (grid.grids[i][j].right.num == grid.grids[i][j].num) {return false;}
+        }
+      }
+    }
+    return true;
+  }
+  else {return false;}
+  }
+  
+  
