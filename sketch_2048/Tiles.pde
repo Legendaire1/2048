@@ -53,6 +53,18 @@ class Tiles{
     if (this.num == 128) {
       fill(237,208,115);
     }
+    if (this.num == 256) {
+      fill(237,202,100);
+    }
+    if (this.num == 512) {
+      fill(238,200,66);
+    }
+    if (this.num == 1024) {
+      fill(238,200,67);
+    }
+    if (this.num == 2048) {
+      fill(236,195,48);
+    }
   }
   
   
