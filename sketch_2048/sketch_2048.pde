@@ -1,5 +1,6 @@
 Grid grid;
-
+int counter = 0;
+int counter1 = 0;
 void setup() {
   size(645, 743);
   grid= new Grid(4, 4);
@@ -7,7 +8,21 @@ void setup() {
 }
 
 void draw() {
-  grid.display();
+  if (won() == true) {
+    if (counter == 0) {
+      grid.display();
+      fill(237, 200, 100, 150);
+      rect(0, 0, width, height);
+      counter++;
+    } else {
+      fill(255);
+      textAlign(CENTER);
+      text("YOU WON!", width/2, height/2);
+    }
+  }
+   else {
+    grid.display();
+  }
 }
 
 void keyPressed() {
@@ -50,6 +65,10 @@ void keyPressed() {
     } else {
       grid.spawn();
     }
+  }
+  if (key == 'k') {
+    grid.grids[0][0].num = 1024;
+    grid.grids[0][1].num = 1024;
   }
 
   if (key == CODED) {
@@ -129,3 +148,15 @@ void set() {
     }
   }
 }
+
+boolean won() {
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      if (grid.grids[i][j].num == 2048) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
