@@ -20,7 +20,12 @@ class Tiles{
     strokeWeight(15);
     stroke(187,173,160);
     rect(x,y,size,size);
-    fill(0);
+    if (num > 4) {
+      fill(255);
+    }
+    else {
+    fill(100);
+    }
     textSize(50);
     textAlign(CENTER);
     if (num != 0) {
