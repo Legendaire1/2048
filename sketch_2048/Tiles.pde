@@ -27,6 +27,9 @@ class Tiles{
     fill(100);
     }
     textSize(50);
+    if(num > 8192) {
+      textSize(40);
+    }
     textAlign(CENTER);
     if (num != 0) {
     text(num,x+size/2,y+15+size/2);
@@ -69,6 +72,9 @@ class Tiles{
     }
     if (this.num == 2048) {
       fill(236,195,48);
+    }
+    if (this.num > 2048) {
+      fill(0);
     }
   }
   
