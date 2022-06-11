@@ -276,4 +276,14 @@ class Grid {
       }
     }
   }
+  
+  void reset() {
+    for (int i=0; i<rows; i++) {
+      for (int j=0; j<cols; j++) {
+        grids[i][j].num = 0;
+      }
+    }
+    initialspawn();
+    setDir();
+  }
 }
