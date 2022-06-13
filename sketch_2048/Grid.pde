@@ -4,6 +4,7 @@ class Grid {
   int cols;
   Tiles[][] before;
   Tiles[][] after;
+  int score; 
 
   static final int left = 0;
   static final int right = 1;
@@ -94,6 +95,7 @@ class Grid {
             if (grids[i][j].right.num == grids[i][j].num) {
               if (grids[i][j].combined == false) {
                 grids[i][j].right.num = grids[i][j].right.num * 2;
+                score+=grids[i][j].right.num;
                 grids[i][j].num = 0;
                 grids[i][j].right.combined = true;
                 shift(right);
@@ -132,6 +134,7 @@ class Grid {
             if (grids[i][j].down.num == grids[i][j].num) {
               if (grids[i][j].combined == false) {
                 grids[i][j].down.num = grids[i][j].num * 2;
+                score+=grids[i][j].down.num;
                 grids[i][j].num = 0;
                 grids[i+1][j].combined = true;
                 shift(down);
@@ -169,6 +172,7 @@ class Grid {
             if (grids[i][j].left.num == grids[i][j].num) {
               if (grids[i][j].combined == false) {
                 grids[i][j].left.num = grids[i][j].num * 2;
+                score+=grids[i][j].left.num;
                 grids[i][j].num = 0;
                 grids[i][j-1].combined = true;
                 shift(left);
@@ -206,6 +210,7 @@ class Grid {
             if (grids[i][j].up.num == grids[i][j].num) {
               if (grids[i][j].combined == false) {
                 grids[i][j].up.num = grids[i][j].num * 2;
+                score+=grids[i][j].up.num;
                 grids[i][j].num = 0;
                 grids[i-1][j].combined = true;
                 shift(up);
@@ -275,15 +280,5 @@ class Grid {
         }
       }
     }
-  }
-  
-  void reset() {
-    for (int i=0; i<rows; i++) {
-      for (int j=0; j<cols; j++) {
-        grids[i][j].num = 0;
-      }
-    }
-    initialspawn();
-    setDir();
   }
 }
