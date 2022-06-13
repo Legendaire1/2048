@@ -16,6 +16,7 @@ void setup() {
 void draw() {
   strokeWeight(1);
   fill(205,193,180);
+  rect(450,120,120,40,10);
   rect(400,40,100,50);
   rect(500,40,100,50);
   textAlign(CENTER,CENTER);
@@ -25,6 +26,7 @@ void draw() {
   text("Score",450,50);
   text(grid.score,450,70);
   text("Best Score",550,50);
+  text("New game",510,135);
   if(grid.score>=bestScore){
     bestScore=grid.score;
   }
@@ -159,6 +161,14 @@ void keyPressed() {
 }
 
 void mousePressed() {
+  if (!won && !lost) {
+     if (mouseX >= 450 && mouseX <=570 && mouseY >= 120 && mouseY <= 160) {
+       //background(250, 248, 239);
+      grid.reset();
+      counter = 0;
+      grid.score=0;
+     }
+  }
   if (won == true) {
     if (mouseX >= width/2 - 150 && mouseX <= width/2-10 && mouseY >= height/2 + 20 && mouseY < height/2 + 60) {
       background(250, 248, 239);
